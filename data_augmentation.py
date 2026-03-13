@@ -36,12 +36,12 @@ def randomly_eq(input_file, output_file, args):
         output_file (str): Path to save the augmented audio file.
         args (dict): Dictionary containing parameters:
             - 'sr': Sampling rate (default: 22050)
-            - 'bands': List of frequency band tuples [(low, high), ...] (default: [(20, 250), (250, 2000), (2000, 8000), (8000, 20000)])
+            - 'bands': List of frequency band tuples [(low, high), ...] (default: [(20, 150), (150, 800), (800, 3000), (3000, 8000)])
             - 'gain_range': Tuple (min_gain, max_gain) in dB (default: (-6, 6))
     """
     # Default parameters
     sr = args.get('sr', 22050)
-    default_bands = [(20, 150), (150, 800), (800, 3000), (3000, 8000)]  # Much safer default bands
+    default_bands = [(100, 500), (500, 2000), (2000, 8000)]  # Safer default bands
     bands = args.get('bands', default_bands)
     gain_range = args.get('gain_range', (-6, 6))
     
@@ -53,44 +53,34 @@ def randomly_eq(input_file, output_file, args):
     adjusted_bands = []
     for low, high in bands:
         # Ensure frequencies don't exceed Nyquist frequency and are positive
-        adj_low = max(1.0, min(float(low), nyquist - 1000))  # At least 1 Hz, leave large margin
-        adj_high = min(float(high), nyquist - 500)  # Leave large margin
+        adj_low = max(1.0, min(float(low), nyquist - 1))  # At least 1 Hz, leave small margin
+        adj_high = min(float(high), nyquist - 1)  # Leave small margin
         if adj_low < adj_high and adj_high > 0:
             adjusted_bands.append((adj_low, adj_high))
     
     # If no valid bands after adjustment, use default safe bands
     if not adjusted_bands:
-        adjusted_bands = [(20.0, nyquist * 0.05), (nyquist * 0.05, nyquist * 0.2), (nyquist * 0.2, nyquist * 0.6)]
+        adjusted_bands = [(100.0, nyquist * 0.1), (nyquist * 0.1, nyquist * 0.4), (nyquist * 0.4, nyquist * 0.8)]
     
     bands = adjusted_bands
     
-    # Apply random EQ to each band
+    # Apply random EQ by filtering each band and applying random gain
     y_eq = np.zeros_like(y)
+    
     for low, high in bands:
-        try:
-            # Normalize frequencies to 0-1 range
-            low_norm = low / (sr_loaded / 2)
-            high_norm = high / (sr_loaded / 2)
-            
-            # Ensure normalized frequencies are in valid range
-            if low_norm >= 1.0 or high_norm >= 1.0 or low_norm <= 0 or high_norm <= 0:
-                print(f"Warning: Invalid normalized frequencies {low_norm}, {high_norm} for band ({low}, {high})")
-                continue
-                
-            # Design bandpass filter with normalized frequencies
-            sos = butter(8, [low_norm, high_norm], 'bandpass', output='sos')
-            # Filter the signal
-            y_band = sosfilt(sos, y)
-            # Apply random gain
-            gain_db = np.random.uniform(gain_range[0], gain_range[1])
-            gain_linear = 10 ** (gain_db / 20)
-            y_band *= gain_linear
-            # Add to output
-            y_eq += y_band
-        except Exception as e:
-            print(f"Warning: Could not process band ({low}, {high}): {e}")
-            # Skip this band
-            continue
+        # Design bandpass filter
+        sos = butter(2, [low, high], btype='bandpass', fs=sr_loaded, output='sos')
+        
+        # Filter the signal
+        y_band = sosfilt(sos, y)
+        
+        # Apply random gain to this band
+        gain_db = np.random.uniform(gain_range[0], gain_range[1])
+        gain_linear = 10 ** (gain_db / 20)
+        y_band *= gain_linear
+        
+        # Add to output
+        y_eq += y_band
     
     # Normalize to prevent clipping
     y_eq = librosa.util.normalize(y_eq)
@@ -213,19 +203,27 @@ def add_noise(input_file, output_file, args):
         args (dict): Dictionary containing parameters:
             - 'sr': Sampling rate (default: 22050)
             - 'noise_type': Type of noise ('white', 'pink', 'brown', default: 'white')
-            - 'snr_db': Signal-to-noise ratio in dB (default: -20, lower = more noise)
+            - 'snr_db': Target signal-to-noise ratio in dB (default: 25, higher = cleaner)
     """
     # Default parameters
     sr = args.get('sr', 22050)
     noise_type = args.get('noise_type', 'white')
-    snr_db = args.get('snr_db', -20)
+    snr_db = float(args.get('snr_db', 25))
     
     # Load audio
     y, sr_loaded = librosa.load(input_file, sr=sr)
     
-    # Calculate noise level based on SNR
+    # SNR must be positive for the "signal/noise" convention used below.
+    # Accept negative user input for backwards compatibility, but map it to magnitude.
+    target_snr_db = abs(snr_db)
+
+    # Calculate noise level based on target SNR.
     signal_power = np.mean(y ** 2)
-    noise_power = signal_power / (10 ** (snr_db / 10))
+    if signal_power <= 1e-12:
+        # Silence or near-silence: nothing meaningful to augment.
+        sf.write(output_file, y, sr_loaded)
+        return
+    noise_power = signal_power / (10 ** (target_snr_db / 10))
     
     # Generate noise
     if noise_type == 'white':
@@ -234,20 +232,22 @@ def add_noise(input_file, output_file, args):
         # Simple pink noise approximation
         white = np.random.normal(0, 1, len(y))
         noise = np.convolve(white, [1, 1], mode='same')
-        noise = noise / np.std(noise) * np.sqrt(noise_power)
+        noise = noise / (np.std(noise) + 1e-12) * np.sqrt(noise_power)
     elif noise_type == 'brown':
         # Brown noise (integrated white noise)
         white = np.random.normal(0, 1, len(y))
         noise = np.cumsum(white)
-        noise = noise / np.std(noise) * np.sqrt(noise_power)
+        noise = noise / (np.std(noise) + 1e-12) * np.sqrt(noise_power)
     else:
         raise ValueError(f"Unknown noise type: {noise_type}")
     
     # Add noise to signal
     y_noisy = y + noise
     
-    # Normalize to prevent clipping
-    y_noisy = librosa.util.normalize(y_noisy)
+    # Preserve loudness/SNR by only scaling when clipping would occur.
+    peak = np.max(np.abs(y_noisy))
+    if peak > 1.0:
+        y_noisy = y_noisy / peak
     
     # Save augmented audio
     sf.write(output_file, y_noisy, sr_loaded)
