@@ -2,8 +2,8 @@
 target_sample_rate = 22050
 hop_length = 2048
 max_sequence_length = 10.0
-cache_path = "training_jams_data\preprocessed_data" #output
-chords_vocab_file = "training_jams_data\chords_vocab.joblib"
+cache_path = "training_plus_augmentaiton\preprocessed_data" #output
+chords_vocab_file = "training_plus_augmentaiton\chords_vocab.joblib"
 
 # Audio processing configuration
 AudioProcessor.target_sample_rate = %target_sample_rate
@@ -24,10 +24,10 @@ CQTransform.start_note = "C1"
 ChordProcessor.sr = %target_sample_rate
 ChordProcessor.hop_length = %hop_length
 ChordProcessor.duration = %max_sequence_length
-ChordProcessor.vocab_path = "training_jams_data\chords_vocab.joblib"
+ChordProcessor.vocab_path = "training_plus_augmentaiton\chords_vocab.joblib"
 
 # Dataset processing configuration
-ChoCoProcessor.audio_path = "test_audio"
+ChoCoProcessor.audio_path = "augmentations_test_outputs"
 ChoCoProcessor.jams_path = "jams"
 ChoCoProcessor.cache_path = %cache_path
 ChoCoProcessor.excerpt_per_song = 100

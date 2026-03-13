@@ -1,0 +1,40 @@
+{
+  "os":  "Windows-10-10.0.26200-SP0",
+  "python":  "CPython 3.11.14",
+  "startedAt":  "2026-03-13T18:29:35.969143Z",
+  "program":  "c:\\UPF\\MIR\\MirInharmonicAugmentation\\data_augmentation_test.ipynb",
+  "codePath":  "c:\\UPF\\MIR\\MirInharmonicAugmentation\\data_augmentation_test.ipynb",
+  "codePathLocal":  "data_augmentation_test.ipynb",
+  "git":  {
+    "remote":  "https://github.com/OriolFreixa/MirInharmonicAugmentation.git",
+    "commit":  "c0b910fd3a4c4d4d324fea4e65bed0ab1ad2db7c"
+  },
+  "email":  "rafaeleduardo.moncayo01@estudiant.upf.edu",
+  "root":  ".",
+  "host":  "Rafael",
+  "executable":  "c:\\UPF\\MIR\\MirInharmonicAugmentation\\.venv\\Scripts\\python.exe",
+  "cpu_count":  20,
+  "cpu_count_logical":  28,
+  "gpu":  "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "1023306362880",
+      "used":  "680872103936"
+    }
+  },
+  "memory":  {
+    "total":  "34070192128"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "memoryTotal":  "8546942976",
+      "cudaCores":  3328,
+      "architecture":  "Blackwell",
+      "uuid":  "GPU-ebbca656-4c90-d279-bb40-d1649df749b6"
+    }
+  ],
+  "cudaVersion":  "13.0",
+  "writerId":  "w8daufzmahqyajoj45mlu6n6fd8dtkuz"
+}

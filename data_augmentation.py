@@ -4,6 +4,19 @@ import librosa
 import soundfile as sf
 from scipy.signal import butter, sosfilt, convolve
 
+
+def _as_mp3_path(output_file: str) -> str:
+    """Return output path with .mp3 extension."""
+    base, _ = os.path.splitext(output_file)
+    return f"{base}.mp3"
+
+
+def _write_mp3(output_file: str, audio: np.ndarray, sr: int) -> str:
+    """Write audio as MP3 and return the final path used."""
+    output_mp3 = _as_mp3_path(output_file)
+    sf.write(output_mp3, audio, sr, format="MP3")
+    return output_mp3
+
 def augment_data(input_folder, output_folder, augmentation, args):
     """
     Augments data from input_folder using the provided augmentation function and saves to output_folder.
@@ -86,7 +99,7 @@ def randomly_eq(input_file, output_file, args):
     y_eq = librosa.util.normalize(y_eq)
     
     # Save augmented audio
-    sf.write(output_file, y_eq, sr_loaded)
+    _write_mp3(output_file, y_eq, sr_loaded)
 
 
 def apply_reverb(input_file, output_file, args):
@@ -127,7 +140,7 @@ def apply_reverb(input_file, output_file, args):
     y_reverb = librosa.util.normalize(y_reverb)
     
     # Save augmented audio
-    sf.write(output_file, y_reverb, sr_loaded)
+    _write_mp3(output_file, y_reverb, sr_loaded)
 
 
 def apply_compression(input_file, output_file, args):
@@ -190,7 +203,7 @@ def apply_compression(input_file, output_file, args):
     y_compressed = librosa.util.normalize(y_compressed)
     
     # Save augmented audio
-    sf.write(output_file, y_compressed, sr_loaded)
+    _write_mp3(output_file, y_compressed, sr_loaded)
 
 
 def add_noise(input_file, output_file, args):
@@ -221,7 +234,7 @@ def add_noise(input_file, output_file, args):
     signal_power = np.mean(y ** 2)
     if signal_power <= 1e-12:
         # Silence or near-silence: nothing meaningful to augment.
-        sf.write(output_file, y, sr_loaded)
+        _write_mp3(output_file, y, sr_loaded)
         return
     noise_power = signal_power / (10 ** (target_snr_db / 10))
     
@@ -250,4 +263,4 @@ def add_noise(input_file, output_file, args):
         y_noisy = y_noisy / peak
     
     # Save augmented audio
-    sf.write(output_file, y_noisy, sr_loaded)
+    _write_mp3(output_file, y_noisy, sr_loaded)
