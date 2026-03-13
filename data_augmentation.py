@@ -218,14 +218,14 @@ def add_noise(input_file, output_file, args):
     # Default parameters
     sr = args.get('sr', 22050)
     noise_type = args.get('noise_type', 'white')
-    snr_db = args.get('snr_db', -20)
+    snr_db = args.get('snr_db', -1.0)
     
     # Load audio
     y, sr_loaded = librosa.load(input_file, sr=sr)
     
     # Calculate noise level based on SNR
     signal_power = np.mean(y ** 2)
-    noise_power = signal_power / (10 ** (snr_db / 10))
+    noise_power = signal_power // (10 ** (snr_db // 10))
     
     # Generate noise
     if noise_type == 'white':
