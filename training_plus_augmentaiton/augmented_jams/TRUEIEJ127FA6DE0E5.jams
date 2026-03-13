@@ -1,0 +1,342 @@
+{
+  "sandbox": {
+    "original_filename": "17-Oh_Pretty_Woman"
+  }, 
+  "annotations": [
+    {
+      "namespace": "chord", 
+      "sandbox": {
+        "key": "human/MARL-Chords"
+      }, 
+      "time": 0, 
+      "duration": null, 
+      "annotation_metadata": {
+        "annotation_tools": "Sonic Visualizer", 
+        "curator": {
+          "name": "Tae Min Cho", 
+          "email": "tmc323@nyu.edu"
+        }, 
+        "annotator": {}, 
+        "version": "1.0", 
+        "corpus": "MARL-Chords", 
+        "annotation_rules": "", 
+        "validation": "TODO", 
+        "data_source": "Undergraduate music students"
+      }, 
+      "data": [
+        {
+          "duration": 8.23, 
+          "confidence": 1.0, 
+          "value": "N", 
+          "time": 0.0
+        }, 
+        {
+          "duration": 5.663, 
+          "confidence": 1.0, 
+          "value": "E:7", 
+          "time": 8.23
+        }, 
+        {
+          "duration": 7.457000000000001, 
+          "confidence": 1.0, 
+          "value": "E:9", 
+          "time": 13.893
+        }, 
+        {
+          "duration": 1.838, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 21.35
+        }, 
+        {
+          "duration": 1.87, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 23.188000000000002
+        }, 
+        {
+          "duration": 1.84, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 25.058
+        }, 
+        {
+          "duration": 1.8750000000000002, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 26.898000000000003
+        }, 
+        {
+          "duration": 2.887, 
+          "confidence": 1.0, 
+          "value": "D:maj", 
+          "time": 28.773000000000003
+        }, 
+        {
+          "duration": 7.418, 
+          "confidence": 1.0, 
+          "value": "E:maj", 
+          "time": 31.660000000000004
+        }, 
+        {
+          "duration": 7.489000000000001, 
+          "confidence": 1.0, 
+          "value": "E:9", 
+          "time": 39.078
+        }, 
+        {
+          "duration": 1.866, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 46.567
+        }, 
+        {
+          "duration": 1.911, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 48.433
+        }, 
+        {
+          "duration": 1.848, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 50.344
+        }, 
+        {
+          "duration": 1.901, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 52.192
+        }, 
+        {
+          "duration": 2.85, 
+          "confidence": 1.0, 
+          "value": "D:maj", 
+          "time": 54.093
+        }, 
+        {
+          "duration": 7.492000000000001, 
+          "confidence": 1.0, 
+          "value": "E:maj", 
+          "time": 56.943000000000005
+        }, 
+        {
+          "duration": 7.361000000000001, 
+          "confidence": 1.0, 
+          "value": "E:9", 
+          "time": 64.435
+        }, 
+        {
+          "duration": 1.8790000000000002, 
+          "confidence": 1.0, 
+          "value": "D:min", 
+          "time": 71.796
+        }, 
+        {
+          "duration": 1.8920000000000001, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 73.67500000000001
+        }, 
+        {
+          "duration": 1.832, 
+          "confidence": 1.0, 
+          "value": "C:maj", 
+          "time": 75.56700000000001
+        }, 
+        {
+          "duration": 1.8470000000000002, 
+          "confidence": 1.0, 
+          "value": "A:min", 
+          "time": 77.399
+        }, 
+        {
+          "duration": 1.8570000000000002, 
+          "confidence": 1.0, 
+          "value": "D:min", 
+          "time": 79.24600000000001
+        }, 
+        {
+          "duration": 1.832, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 81.10300000000001
+        }, 
+        {
+          "duration": 3.6900000000000004, 
+          "confidence": 1.0, 
+          "value": "C:maj", 
+          "time": 82.935
+        }, 
+        {
+          "duration": 1.8130000000000002, 
+          "confidence": 1.0, 
+          "value": "D:min", 
+          "time": 86.625
+        }, 
+        {
+          "duration": 1.852, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 88.438
+        }, 
+        {
+          "duration": 1.8290000000000002, 
+          "confidence": 1.0, 
+          "value": "C:maj", 
+          "time": 90.29
+        }, 
+        {
+          "duration": 1.832, 
+          "confidence": 1.0, 
+          "value": "A:min", 
+          "time": 92.119
+        }, 
+        {
+          "duration": 1.858, 
+          "confidence": 1.0, 
+          "value": "D:min", 
+          "time": 93.95100000000001
+        }, 
+        {
+          "duration": 1.822, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 95.80900000000001
+        }, 
+        {
+          "duration": 1.824, 
+          "confidence": 1.0, 
+          "value": "C:maj", 
+          "time": 97.631
+        }, 
+        {
+          "duration": 1.8650000000000002, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 99.45500000000001
+        }, 
+        {
+          "duration": 1.822, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 101.32000000000001
+        }, 
+        {
+          "duration": 1.8860000000000001, 
+          "confidence": 1.0, 
+          "value": "D:min", 
+          "time": 103.14200000000001
+        }, 
+        {
+          "duration": 1.8030000000000002, 
+          "confidence": 1.0, 
+          "value": "E:maj", 
+          "time": 105.028
+        }, 
+        {
+          "duration": 1.824, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 106.831
+        }, 
+        {
+          "duration": 1.891, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 108.655
+        }, 
+        {
+          "duration": 1.824, 
+          "confidence": 1.0, 
+          "value": "D:min", 
+          "time": 110.546
+        }, 
+        {
+          "duration": 7.356000000000001, 
+          "confidence": 1.0, 
+          "value": "E:9", 
+          "time": 112.37
+        }, 
+        {
+          "duration": 1.8880000000000001, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 119.72600000000001
+        }, 
+        {
+          "duration": 1.858, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 121.614
+        }, 
+        {
+          "duration": 1.832, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 123.47200000000001
+        }, 
+        {
+          "duration": 1.7890000000000001, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 125.304
+        }, 
+        {
+          "duration": 2.829, 
+          "confidence": 1.0, 
+          "value": "D:maj", 
+          "time": 127.093
+        }, 
+        {
+          "duration": 194.274, 
+          "confidence": 1.0, 
+          "value": "E:7", 
+          "time": 129.922
+        }, 
+        {
+          "duration": 3.599, 
+          "confidence": 1.0, 
+          "value": "N", 
+          "time": 324.196
+        }, 
+        {
+          "duration": 5.486000000000001, 
+          "confidence": 1.0, 
+          "value": "E:7", 
+          "time": 327.795
+        }, 
+        {
+          "duration": 16.580000000000002, 
+          "confidence": 1.0, 
+          "value": "E:9", 
+          "time": 333.281
+        }, 
+        {
+          "duration": 0.42700000000000005, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 349.86100000000005
+        }, 
+        {
+          "duration": 44.712, 
+          "confidence": 1.0, 
+          "value": "N", 
+          "time": 350.288
+        }
+      ]
+    }
+  ], 
+  "file_metadata": {
+    "jams_version": "0.2.1", 
+    "title": "Oh, Pretty Woman", 
+    "identifiers": {
+      "audio_md5": "4487067046ec256c62282d414c4f7e2c", 
+      "echonest_track_id": "TRUEIEJ127FA6DE0E5", 
+      "md5": "b74aad6c367e0c0e3ca941eb99ab3c79"
+    }, 
+    "release": "", 
+    "duration": 395.96363, 
+    "artist": "Orbison, Roy"
+  }
+}

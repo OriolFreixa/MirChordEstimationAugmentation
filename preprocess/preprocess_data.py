@@ -26,6 +26,22 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
+DATASET_PREFIXES = {
+    "billboard": "Billboard",
+    "isophonics": "Isophonics",
+    "marl": "MARL",
+}
+
+
+def normalize_dataset_prefix(dataset_name: str | None) -> str:
+    """Map dataset identifiers to the filename prefixes expected by ACE."""
+    if not dataset_name:
+        return ""
+
+    normalized_name = DATASET_PREFIXES.get(dataset_name.lower(), dataset_name)
+    return f"{normalized_name}_"
+
+
 def create_chords_vocab(jams_path: Path, output_file: str | Path) -> Path:
     """
     Create a vocabulary of chords from the JAMS files in the specified directory.
@@ -170,7 +186,7 @@ class ChoCoProcessor:
             for augment in self.augmentation
         ]
 
-        dataset_name = f"{dataset_name}_" if dataset_name else ""
+        dataset_name = normalize_dataset_prefix(dataset_name)
 
         for onset, augment in chunks:
             chunk_name = f"{dataset_name}{file_name}_t{onset:04d}_p{augment:+d}"

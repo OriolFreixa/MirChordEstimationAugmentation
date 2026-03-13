@@ -1,0 +1,394 @@
+{
+  "sandbox": {
+    "original_filename": "01_-_Sgt._Pepper's_Lonely_Hearts_Club_Band"
+  }, 
+  "annotations": [
+    {
+      "namespace": "chord", 
+      "sandbox": {
+        "key": "human/Isophonics"
+      }, 
+      "time": 0, 
+      "duration": null, 
+      "annotation_metadata": {
+        "annotation_tools": "Sonic Visualizer", 
+        "curator": {
+          "name": "", 
+          "email": ""
+        }, 
+        "annotator": {
+          "name": "TODO", 
+          "email": "TODO"
+        }, 
+        "version": "1.0", 
+        "corpus": "Isophonics", 
+        "annotation_rules": "TODO", 
+        "validation": "TODO", 
+        "data_source": "Centre for Digital Music"
+      }, 
+      "data": [
+        {
+          "duration": 12.350209000000001, 
+          "confidence": 1.0, 
+          "value": "N", 
+          "time": 0.0
+        }, 
+        {
+          "duration": 5.152398000000001, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 12.350209000000001
+        }, 
+        {
+          "duration": 2.565805, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 17.502607
+        }, 
+        {
+          "duration": 1.613787, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 20.068412000000002
+        }, 
+        {
+          "duration": 0.917188, 
+          "confidence": 1.0, 
+          "value": "D", 
+          "time": 21.682199
+        }, 
+        {
+          "duration": 1.311928, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 22.599387
+        }, 
+        {
+          "duration": 1.288707, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 23.911315000000002
+        }, 
+        {
+          "duration": 1.3467580000000001, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 25.200022
+        }, 
+        {
+          "duration": 1.219047, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 26.546780000000002
+        }, 
+        {
+          "duration": 1.2654880000000002, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 27.765827
+        }, 
+        {
+          "duration": 1.3003170000000002, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 29.031315000000003
+        }, 
+        {
+          "duration": 1.300318, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 30.331632000000003
+        }, 
+        {
+          "duration": 1.207437, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 31.631950000000003
+        }, 
+        {
+          "duration": 2.5890250000000004, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 32.839387
+        }, 
+        {
+          "duration": 2.5077549990000003, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 35.428412
+        }, 
+        {
+          "duration": 1.2887080000000002, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 37.936167000000005
+        }, 
+        {
+          "duration": 1.2770970000000001, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 39.224875000000004
+        }, 
+        {
+          "duration": 2.449706, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 40.501972
+        }, 
+        {
+          "duration": 2.577414, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 42.951678
+        }, 
+        {
+          "duration": 2.5309760000000003, 
+          "confidence": 1.0, 
+          "value": "F", 
+          "time": 45.529092000000006
+        }, 
+        {
+          "duration": 2.530975, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 48.060068
+        }, 
+        {
+          "duration": 5.0735600000000005, 
+          "confidence": 1.0, 
+          "value": "D", 
+          "time": 50.591043000000006
+        }, 
+        {
+          "duration": 1.335147, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 55.66460300000001
+        }, 
+        {
+          "duration": 1.300318, 
+          "confidence": 1.0, 
+          "value": "Bb:maj6", 
+          "time": 56.999750000000006
+        }, 
+        {
+          "duration": 1.2654869990000002, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 58.300068
+        }, 
+        {
+          "duration": 1.300318, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 59.565555
+        }, 
+        {
+          "duration": 2.577414, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 60.865873
+        }, 
+        {
+          "duration": 2.472926, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 63.443287000000005
+        }, 
+        {
+          "duration": 1.2770970000000001, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 65.916213
+        }, 
+        {
+          "duration": 1.2422680000000001, 
+          "confidence": 1.0, 
+          "value": "Bb:maj6", 
+          "time": 67.19331000000001
+        }, 
+        {
+          "duration": 1.207437, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 68.435578
+        }, 
+        {
+          "duration": 1.2422680000000001, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 69.643015
+        }, 
+        {
+          "duration": 2.5077549990000003, 
+          "confidence": 1.0, 
+          "value": "A", 
+          "time": 70.885283
+        }, 
+        {
+          "duration": 2.5077549990000003, 
+          "confidence": 1.0, 
+          "value": "D", 
+          "time": 73.393038
+        }, 
+        {
+          "duration": 2.5077549990000003, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 75.90079300000001
+        }, 
+        {
+          "duration": 2.414876, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 78.40854800000001
+        }, 
+        {
+          "duration": 2.217505, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 80.823424
+        }, 
+        {
+          "duration": 0.603719, 
+          "confidence": 1.0, 
+          "value": "C:sus4", 
+          "time": 83.040929
+        }, 
+        {
+          "duration": 0.5572790000000001, 
+          "confidence": 1.0, 
+          "value": "C/9", 
+          "time": 83.644648
+        }, 
+        {
+          "duration": 1.544127, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 84.20192700000001
+        }, 
+        {
+          "duration": 2.4497050000000002, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 85.746054
+        }, 
+        {
+          "duration": 2.403265, 
+          "confidence": 1.0, 
+          "value": "F:7", 
+          "time": 88.19575900000001
+        }, 
+        {
+          "duration": 2.472926, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 90.599024
+        }, 
+        {
+          "duration": 4.86458, 
+          "confidence": 1.0, 
+          "value": "D", 
+          "time": 93.07195
+        }, 
+        {
+          "duration": 1.369977, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 97.93653
+        }, 
+        {
+          "duration": 1.230658, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 99.30650700000001
+        }, 
+        {
+          "duration": 1.253878, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 100.537165
+        }, 
+        {
+          "duration": 1.219047, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 101.791043
+        }, 
+        {
+          "duration": 1.2190480000000001, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 103.01009
+        }, 
+        {
+          "duration": 1.172608, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 104.229138
+        }, 
+        {
+          "duration": 1.2770970000000001, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 105.401746
+        }, 
+        {
+          "duration": 1.207438, 
+          "confidence": 1.0, 
+          "value": "G:7", 
+          "time": 106.678843
+        }, 
+        {
+          "duration": 2.472925, 
+          "confidence": 1.0, 
+          "value": "A:7", 
+          "time": 107.88628100000001
+        }, 
+        {
+          "duration": 2.3684350000000003, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 110.359206
+        }, 
+        {
+          "duration": 1.2654880000000002, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 112.727641
+        }, 
+        {
+          "duration": 1.219047, 
+          "confidence": 1.0, 
+          "value": "C:7", 
+          "time": 113.99312900000001
+        }, 
+        {
+          "duration": 2.4380960000000003, 
+          "confidence": 1.0, 
+          "value": "G", 
+          "time": 115.21217600000001
+        }, 
+        {
+          "duration": 4.785646000000001, 
+          "confidence": 1.0, 
+          "value": "C", 
+          "time": 117.650272
+        }
+      ]
+    }
+  ], 
+  "file_metadata": {
+    "jams_version": "0.2.1", 
+    "title": "Sgt. Pepper's Lonely Hearts Club Band", 
+    "identifiers": {
+      "audio_md5": "0b7c8adfc36cd5adf6e1376fd57cca59", 
+      "echonest_song_id": "SOMVMME136A1653699", 
+      "echonest_track_id": "TRELVER149E34135C0", 
+      "md5": "0b7c8adfc36cd5adf6e1376fd57cca59"
+    }, 
+    "release": "Sgt. Pepper's Lonely Hearts Club Band", 
+    "duration": 122.46204, 
+    "artist": "The Beatles"
+  }
+}
