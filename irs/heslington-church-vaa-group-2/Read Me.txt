@@ -1,0 +1,131 @@
+
+Format(s): 
+B-Format (4 Channel Files)
+
+B-Format: Multichannel: 
+
+    impulseresponseheslingtonchurch-001.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 3 s
+File Size: 3.3 MB
+File Format: wav
+Source Sound: Genelec 8030, 15 second Logarithmic Sine Sweep.
+Microphone: Soundfield ST450 kit
+Source Location: Directly in front of altar (located on slightly raised platform).
+Microphone Location: Front row of pews directly left of altar.
+Source Receiver Distance (m): 4.5 m
+Source Height: 1.57 m
+Receiver Height: 1.21 m
+Temperature: 14 °C
+
+
+    impulseresponseheslingtonchurch-002.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 3 s
+File Size: 3.3 MB
+File Format: wav
+Source Sound: Genelec 8030, 15 second Logarithmic Sine Sweep.
+Microphone: Soundfield ST450 kit
+Source Location: Directly in front of altar (located on slightly raised platform).
+Microphone Location: Front of pew diagonally left from the altar.
+Source Receiver Distance (m): 5 m
+Source Height: 1.57 m
+Receiver Height: 1.21 m
+Temperature: 13 °C
+
+
+    impulseresponseheslingtonchurch-003.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 3 s
+File Size: 3.3 MB
+File Format: wav
+Source Sound: Genelec 8030, 15 second Logarithmic Sine Sweep.
+Microphone: Soundfield ST450 kit
+Source Location: Directly in front of altar (Located on slightly raised platform).
+Microphone Location: Front of pew middle left from the altar.
+Source Receiver Distance (m): 4.1 m
+Source Height: 1.57 m
+Receiver Height: 1.21 m
+Temperature: 13 °C
+
+
+    impulseresponseheslingtonchurch-004.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 3 s
+File Size: 3.3 MB
+File Format: wav
+Source Sound: Genelec 8030, 15 second Logarithmic Sine Sweep.
+Microphone: Soundfield ST450 kit
+Source Location: Directly in front of altar (Located on slightly raised platform).
+Microphone Location: Front of pews middle right from altar.
+Source Receiver Distance (m): 4.1 m
+Source Height: 1.57 m
+Receiver Height: 1.21 m
+Temperature: 13 °C
+
+
+    impulseresponseheslingtonchurch-005.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 3 s
+File Size: 3.3 MB
+File Format: wav
+Source Sound: Genelec 8030, 15 second Logarithmic Sine Sweep.
+Microphone: Soundfield ST450 kit
+Source Location: Directly in front of altar (Located on slightly raised platform).
+Microphone Location: Front of pews directly to the right of altar.
+Source Receiver Distance (m): 4.5 m
+Source Height: 1.57 m
+Receiver Height: 1.21 m
+Temperature: 13 °C
+
+
+    impulseresponseheslingtonchurch-006.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 3 s
+File Size: 3.3 MB
+File Format: wav
+Source Sound: Genelec 8030, 15 second Logarithmic Sine Sweep.
+Microphone: Soundfield ST450 kit
+Source Location: Directly in front of altar (Located on slightly raised platform).
+Microphone Location: Middle rear section of the church, just forward of back wall.
+Source Receiver Distance (m): 11 m
+Source Height: 1.57 m
+Receiver Height: 1.60 m
+Temperature: 13 °C
+
+
+    impulseresponseheslingtonchurch-007.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 3 s
+File Size: 3.3 MB
+File Format: wav
+Source Sound: Genelec 8030, 15 second Logarithmic Sine Sweep.
+Microphone: Soundfield ST450 kit
+Source Location: Directly in front of altar (Located on slightly raised platform).
+Microphone Location: Rear left corner of the church.
+Source Receiver Distance (m): 12.1 m
+Source Height: 1.57 m
+Receiver Height: 1.60 m
+Temperature: 13 °C
+
