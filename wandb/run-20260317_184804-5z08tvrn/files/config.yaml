@@ -1,0 +1,104 @@
+_wandb:
+    value:
+        cli_version: 0.24.0
+        e:
+            qzbn0oyc29g31q6tlbom1ka6uyzuhxih:
+                apple:
+                    ecpuCores: 4
+                    gpuCores: 8
+                    memoryGb: 16
+                    name: Apple M2
+                    pcpuCores: 4
+                    ramTotalBytes: "17179869184"
+                codePath: /Users/oriolfreixa/Documents/GitHub/MIR/MirInharmonicAugmentation/code_test.ipynb
+                codePathLocal: code_test.ipynb
+                cpu_count: 8
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "494384795648"
+                        used: "263440289792"
+                email: oriol.freixa01@estudiant.upf.edu
+                executable: /opt/homebrew/Caskroom/miniconda/base/envs/MirAug/bin/python
+                git:
+                    commit: bb0c4ff61c296a74db818853ef8878e4912651e4
+                    remote: https://github.com/OriolFreixa/MirInharmonicAugmentation.git
+                host: Mac.home
+                memory:
+                    total: "17179869184"
+                os: macOS-15.7.2-arm64-arm-64bit
+                program: /Users/oriolfreixa/Documents/GitHub/MIR/MirInharmonicAugmentation/code_test.ipynb
+                python: CPython 3.12.12
+                root: .
+                startedAt: "2026-03-17T17:48:04.704170Z"
+                writerId: qzbn0oyc29g31q6tlbom1ka6uyzuhxih
+        m:
+            - "1": trainer/global_step
+              "6":
+                - 3
+              "7": []
+            - "2": '*'
+              "5": 1
+              "6":
+                - 1
+              "7": []
+        python_version: 3.12.12
+        t:
+            "1":
+                - 1
+                - 5
+                - 53
+                - 106
+            "2":
+                - 1
+                - 5
+                - 53
+                - 106
+            "3":
+                - 2
+                - 7
+                - 13
+                - 66
+            "4": 3.12.12
+            "5": 0.24.0
+            "8":
+                - 1
+            "12": 0.24.0
+            "13": darwin-arm64
+convolution_first:
+    value: true
+depthwise_conv_kernel_size:
+    value: 31
+dropout:
+    value: 0.1
+ffn_dim:
+    value: 1024
+hidden_dim:
+    value: 256
+input_dim:
+    value: 144
+learning_rate:
+    value: 0.0001
+mir_eval_on_validation:
+    value: false
+num_heads:
+    value: 4
+num_layers:
+    value: 4
+positional_encoding:
+    value: false
+use_group_norm:
+    value: false
+vocab_path:
+    value: training_jams_data/chords_vocab.joblib
+vocab_type:
+    value: majmin
+vocabularies:
+    value:
+        bass: 13
+        complete: 170
+        majmin: 26
+        mode: 8
+        onehot: 12
+        root: 13
+        simplified: 50

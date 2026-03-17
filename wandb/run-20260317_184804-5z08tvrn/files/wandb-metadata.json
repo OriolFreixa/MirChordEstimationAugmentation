@@ -1,0 +1,36 @@
+{
+  "os": "macOS-15.7.2-arm64-arm-64bit",
+  "python": "CPython 3.12.12",
+  "startedAt": "2026-03-17T17:48:04.704170Z",
+  "program": "/Users/oriolfreixa/Documents/GitHub/MIR/MirInharmonicAugmentation/code_test.ipynb",
+  "codePath": "/Users/oriolfreixa/Documents/GitHub/MIR/MirInharmonicAugmentation/code_test.ipynb",
+  "codePathLocal": "code_test.ipynb",
+  "git": {
+    "remote": "https://github.com/OriolFreixa/MirInharmonicAugmentation.git",
+    "commit": "bb0c4ff61c296a74db818853ef8878e4912651e4"
+  },
+  "email": "oriol.freixa01@estudiant.upf.edu",
+  "root": ".",
+  "host": "Mac.home",
+  "executable": "/opt/homebrew/Caskroom/miniconda/base/envs/MirAug/bin/python",
+  "cpu_count": 8,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "263440289792"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "apple": {
+    "name": "Apple M2",
+    "ecpuCores": 4,
+    "pcpuCores": 4,
+    "gpuCores": 8,
+    "memoryGb": 16,
+    "ramTotalBytes": "17179869184"
+  },
+  "writerId": "qzbn0oyc29g31q6tlbom1ka6uyzuhxih"
+}
