@@ -149,7 +149,7 @@ class LeakageSafeChocoAudioDataset(Dataset):
 
     def __getitem__(self, index):
         return torch.load(
-            self.data_path / self.data_list[index],
+            self.data_list[index],
             weights_only=False,
             map_location="cpu",
         )
