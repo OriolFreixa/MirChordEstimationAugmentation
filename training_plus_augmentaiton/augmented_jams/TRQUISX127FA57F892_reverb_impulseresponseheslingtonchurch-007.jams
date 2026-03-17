@@ -1,0 +1,522 @@
+{
+  "sandbox": {
+    "original_filename": "01-Livin_La_Vida_Loca"
+  }, 
+  "annotations": [
+    {
+      "namespace": "chord", 
+      "sandbox": {
+        "key": "human/MARL-Chords"
+      }, 
+      "time": 0, 
+      "duration": null, 
+      "annotation_metadata": {
+        "annotation_tools": "Sonic Visualizer", 
+        "curator": {
+          "name": "Tae Min Cho", 
+          "email": "tmc323@nyu.edu"
+        }, 
+        "annotator": {}, 
+        "version": "1.0", 
+        "corpus": "MARL-Chords", 
+        "annotation_rules": "", 
+        "validation": "TODO", 
+        "data_source": "Undergraduate music students"
+      }, 
+      "data": [
+        {
+          "duration": 0.40700000000000003, 
+          "confidence": 1.0, 
+          "value": "N", 
+          "time": 0.0
+        }, 
+        {
+          "duration": 37.833000000000006, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 0.40700000000000003
+        }, 
+        {
+          "duration": 2.697, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 38.24
+        }, 
+        {
+          "duration": 2.6780000000000004, 
+          "confidence": 1.0, 
+          "value": "G#:min", 
+          "time": 40.937000000000005
+        }, 
+        {
+          "duration": 2.7190000000000003, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 43.615
+        }, 
+        {
+          "duration": 2.705, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 46.334
+        }, 
+        {
+          "duration": 2.6990000000000003, 
+          "confidence": 1.0, 
+          "value": "G#:7", 
+          "time": 49.039
+        }, 
+        {
+          "duration": 2.68, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 51.73800000000001
+        }, 
+        {
+          "duration": 1.358, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 54.418000000000006
+        }, 
+        {
+          "duration": 4.0200000000000005, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 55.776
+        }, 
+        {
+          "duration": 1.352, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 59.79600000000001
+        }, 
+        {
+          "duration": 4.014, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 61.148
+        }, 
+        {
+          "duration": 1.4080000000000001, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 65.162
+        }, 
+        {
+          "duration": 3.987, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 66.57000000000001
+        }, 
+        {
+          "duration": 1.3330000000000002, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 70.557
+        }, 
+        {
+          "duration": 1.399, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 71.89
+        }, 
+        {
+          "duration": 1.33, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 73.289
+        }, 
+        {
+          "duration": 1.381, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 74.619
+        }, 
+        {
+          "duration": 1.347, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 76.0
+        }, 
+        {
+          "duration": 22.879, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 77.34700000000001
+        }, 
+        {
+          "duration": 2.7190000000000003, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 100.22600000000001
+        }, 
+        {
+          "duration": 2.704, 
+          "confidence": 1.0, 
+          "value": "G#:min", 
+          "time": 102.94500000000001
+        }, 
+        {
+          "duration": 2.688, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 105.649
+        }, 
+        {
+          "duration": 2.701, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 108.337
+        }, 
+        {
+          "duration": 2.668, 
+          "confidence": 1.0, 
+          "value": "G#:7", 
+          "time": 111.03800000000001
+        }, 
+        {
+          "duration": 2.668, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 113.706
+        }, 
+        {
+          "duration": 1.383, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 116.37400000000001
+        }, 
+        {
+          "duration": 4.04, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 117.757
+        }, 
+        {
+          "duration": 1.35, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 121.79700000000001
+        }, 
+        {
+          "duration": 4.058, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 123.147
+        }, 
+        {
+          "duration": 1.328, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 127.20500000000001
+        }, 
+        {
+          "duration": 4.051, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 128.53300000000002
+        }, 
+        {
+          "duration": 1.368, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 132.584
+        }, 
+        {
+          "duration": 1.3070000000000002, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 133.952
+        }, 
+        {
+          "duration": 1.389, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 135.25900000000001
+        }, 
+        {
+          "duration": 1.3210000000000002, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 136.648
+        }, 
+        {
+          "duration": 1.377, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 137.96900000000002
+        }, 
+        {
+          "duration": 4.025, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 139.346
+        }, 
+        {
+          "duration": 1.304, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 143.371
+        }, 
+        {
+          "duration": 4.102, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 144.675
+        }, 
+        {
+          "duration": 1.354, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 148.77700000000002
+        }, 
+        {
+          "duration": 1.3390000000000002, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 150.131
+        }, 
+        {
+          "duration": 2.7, 
+          "confidence": 1.0, 
+          "value": "F#:min", 
+          "time": 151.47
+        }, 
+        {
+          "duration": 2.7350000000000003, 
+          "confidence": 1.0, 
+          "value": "G#:min", 
+          "time": 154.17000000000002
+        }, 
+        {
+          "duration": 2.672, 
+          "confidence": 1.0, 
+          "value": "A:maj", 
+          "time": 156.905
+        }, 
+        {
+          "duration": 2.676, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 159.577
+        }, 
+        {
+          "duration": 2.6500000000000004, 
+          "confidence": 1.0, 
+          "value": "G#:7", 
+          "time": 162.25300000000001
+        }, 
+        {
+          "duration": 2.7710000000000004, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 164.90300000000002
+        }, 
+        {
+          "duration": 1.294, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 167.674
+        }, 
+        {
+          "duration": 4.025, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 168.96800000000002
+        }, 
+        {
+          "duration": 1.391, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 172.99300000000002
+        }, 
+        {
+          "duration": 4.035, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 174.38400000000001
+        }, 
+        {
+          "duration": 1.3290000000000002, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 178.419
+        }, 
+        {
+          "duration": 4.04, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 179.74800000000002
+        }, 
+        {
+          "duration": 1.383, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 183.788
+        }, 
+        {
+          "duration": 4.073, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 185.17100000000002
+        }, 
+        {
+          "duration": 1.3390000000000002, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 189.244
+        }, 
+        {
+          "duration": 4.058, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 190.583
+        }, 
+        {
+          "duration": 1.32, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 194.64100000000002
+        }, 
+        {
+          "duration": 4.078, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 195.961
+        }, 
+        {
+          "duration": 1.3030000000000002, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 200.03900000000002
+        }, 
+        {
+          "duration": 4.04, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 201.342
+        }, 
+        {
+          "duration": 1.347, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 205.382
+        }, 
+        {
+          "duration": 1.363, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 206.729
+        }, 
+        {
+          "duration": 1.338, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 208.092
+        }, 
+        {
+          "duration": 1.3880000000000001, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 209.43
+        }, 
+        {
+          "duration": 1.3270000000000002, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 210.818
+        }, 
+        {
+          "duration": 4.049, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 212.145
+        }, 
+        {
+          "duration": 1.359, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 216.19400000000002
+        }, 
+        {
+          "duration": 4.022, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 217.55300000000003
+        }, 
+        {
+          "duration": 1.35, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 221.57500000000002
+        }, 
+        {
+          "duration": 4.035, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 222.925
+        }, 
+        {
+          "duration": 1.328, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 226.96
+        }, 
+        {
+          "duration": 4.082, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 228.288
+        }, 
+        {
+          "duration": 1.3390000000000002, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 232.37
+        }, 
+        {
+          "duration": 1.342, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 233.709
+        }, 
+        {
+          "duration": 1.351, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 235.05100000000002
+        }, 
+        {
+          "duration": 1.401, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 236.40200000000002
+        }, 
+        {
+          "duration": 1.082, 
+          "confidence": 1.0, 
+          "value": "B:maj", 
+          "time": 237.80300000000003
+        }, 
+        {
+          "duration": 4.115, 
+          "confidence": 1.0, 
+          "value": "C#:min", 
+          "time": 238.88500000000002
+        }
+      ]
+    }
+  ], 
+  "file_metadata": {
+    "jams_version": "0.2.1", 
+    "title": "Livin' La Vida Loca", 
+    "identifiers": {
+      "audio_md5": "f12283f5cafbf4eb1428371dc35c0975", 
+      "echonest_track_id": "TRQUISX127FA57F892", 
+      "md5": "d1508c99e463c05dbcc8d07699177b85"
+    }, 
+    "release": "", 
+    "duration": 243.3824, 
+    "artist": "Ricky Martin"
+  }
+}

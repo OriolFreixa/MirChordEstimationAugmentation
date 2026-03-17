@@ -1,0 +1,149 @@
+
+Format(s): 
+B-Format (4 Channel Files)
+
+B-Format: Multichannel: 
+
+    kick_ir.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 2 s
+File Size: 2.2 MB
+File Format: wav
+Source Sound: 10 Second Exponential Sine Sweep (20Hz - 20kHz)
+Microphone: Soundfield ST350 Kit
+Source Location: Kick Drum position
+Microphone Location: Opposite the source 76cm from wall
+Source Receiver Distance (m): 2.46 m
+Source Height: 0.25 m
+Receiver Height: 1.70 m
+Temperature: 21 °C
+
+
+    snare_ir.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 2 s
+File Size: 2.2 MB
+File Format: wav
+Source Sound: 10 Second Exponential Sine Sweep (20Hz - 20kHz)
+Microphone: Soundfield ST350 Kit
+Source Location: Snare Drum Position
+Microphone Location: Opposite the source 76cm from wall
+Source Receiver Distance (m): 2.46 m
+Source Height: 0.67 m
+Receiver Height: 1.70 m
+Temperature: 21 °C
+
+
+    toma_ir.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 2 s
+File Size: 2.2 MB
+File Format: wav
+Source Sound: 10 Second Exponential Sine Sweep (20Hz - 20kHz)
+Microphone: Soundfield ST350 Kit
+Source Location: Tom A Position
+Microphone Location: Opposite the source 76cm from wall
+Source Receiver Distance (m): 2.21 m
+Source Height: 0.87 m
+Receiver Height: 1.70 m
+Temperature: 21 °C
+
+
+    tomb_ir.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 2 s
+File Size: 2.2 MB
+File Format: wav
+Source Sound: 10 Second Exponential Sine Sweep (20Hz - 20kHz)
+Microphone: Soundfield ST350 Kit
+Source Location: Tom B Position
+Microphone Location: Opposite the source 76cm from wall
+Source Receiver Distance (m): 2.23 m
+Source Height: 0.87 m
+Receiver Height: 1.70 m
+Temperature: 21 °C
+
+
+    tomc_ir.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 2 s
+File Size: 2.2 MB
+File Format: wav
+Source Sound: 10 Second Exponential Sine Sweep (20Hz - 20kHz)
+Microphone: Soundfield ST350 Kit
+Source Location: Floor Tom Position
+Microphone Location: Opposite the source 76cm from wall
+Source Receiver Distance (m): 2.41 m
+Source Height: 0.77 m
+Receiver Height: 1.70 m
+Temperature: 21 °C
+
+
+    hh_ir.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 2 s
+File Size: 2.2 MB
+File Format: wav
+Source Sound: 10 Second Exponential Sine Sweep (20Hz - 20kHz)
+Microphone: Soundfield ST350 Kit
+Source Location: Hi Hat Position
+Microphone Location: Opposite the source 76cm from wall
+Source Receiver Distance (m): 2.43 m
+Source Height: 1.04 m
+Receiver Height: 1.70 m
+Temperature: 21 °C
+
+
+    crash_ir.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 2 s
+File Size: 2.2 MB
+File Format: wav
+Source Sound: 10 Second Exponential Sine Sweep (20Hz - 20kHz)
+Microphone: Soundfield ST350 Kit
+Source Location: Crash Cymbal Position
+Microphone Location: Opposite the source 76cm from wall
+Source Receiver Distance (m): 2.13 m
+Source Height: 1.17 m
+Receiver Height: 1.70 m
+Temperature: 21 °C
+
+
+    ride_ir.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 2 s
+File Size: 2.2 MB
+File Format: wav
+Source Sound: 10 Second Exponential Sine Sweep (20Hz - 20kHz)
+Microphone: Soundfield ST350 Kit
+Source Location: Ride Cymbal Position
+Microphone Location: Opposite the source 76cm from wall
+Source Receiver Distance (m): 2.17 m
+Source Height: 1.17 m
+Receiver Height: 1.70 m
+Temperature: 21 °C
+

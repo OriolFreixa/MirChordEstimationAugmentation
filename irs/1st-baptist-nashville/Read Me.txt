@@ -1,0 +1,34 @@
+
+Format(s): 
+Stereo (Stereo Files)
+
+Stereo: 
+
+    1st_baptist_nashville_far_close.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 2
+Bits per Sample: 24
+Duration: 3 s
+File Size: 1.68 MB
+File Format: wav
+
+
+    1st_baptist_nashville_far_wide.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 2
+Bits per Sample: 24
+Duration: 3.5 s
+File Size: 1.96 MB
+File Format: wav
+
+
+    1st_baptist_nashville_balcony.wav
+
+Sample Rate: 96 kHz
+Number of Channels: 2
+Bits per Sample: 24
+Duration: 3 s
+File Size: 1.68 MB
+File Format: wav 
