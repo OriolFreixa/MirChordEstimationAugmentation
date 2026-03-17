@@ -1,5 +1,39 @@
 """
 Local ACE training wrapper with leakage-safe dataset splitting.
+
+`GROUP_SUFFIXES` controls which filename suffixes should be treated as belonging to
+the same underlying source track. This affects two places:
+
+1. Train/validation splitting:
+   files such as `billboard_song_add_noise_t0000_p+0.pt` and
+   `billboard_song_t0000_p+0.pt` are grouped together before the split.
+2. Validation/test filtering:
+   when `augmentation=False`, files whose track IDs end with one of the configured
+   suffixes are excluded from validation/test so those splits stay clean.
+
+Override `GROUP_SUFFIXES` with gin:
+
+    ChocoAudioDataModule.GROUP_SUFFIXES = (
+        "add_noise",
+        "apply_compression",
+        "randomly_eq",
+        "apply_reverb",
+    )
+
+Override `GROUP_SUFFIXES` from the notebook/API:
+
+    ace_train_model(
+        model_name="conformer",
+        run_name="experiment",
+        params={
+            "ChocoAudioDataModule.GROUP_SUFFIXES": (
+                "add_noise",
+                "apply_compression",
+                "randomly_eq",
+                "apply_reverb",
+            ),
+        },
+    )
 """
 
 from __future__ import annotations
@@ -20,9 +54,11 @@ from lightning.pytorch.loggers import WandbLogger
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader, Dataset
 
-AUGMENTATION_SUFFIXES = ("add_noise", "apply_compression", "randomly_eq", "apply_reverb")
-_AUGMENTATION_SUFFIX_RE = re.compile(
-    rf"_(?:{'|'.join(re.escape(name) for name in AUGMENTATION_SUFFIXES)})$"
+DEFAULT_GROUP_SUFFIXES = (
+    "add_noise",
+    "apply_compression",
+    "randomly_eq",
+    "apply_reverb",
 )
 
 
@@ -39,26 +75,47 @@ def _glob_case_variants(data_path: Path, prefix: str) -> list[Path]:
     )
 
 
-def _canonical_track_id(track_id: str) -> str:
-    return _AUGMENTATION_SUFFIX_RE.sub("", track_id)
+def _group_suffix_regex(group_suffixes: tuple[str, ...]) -> re.Pattern[str]:
+    return re.compile(
+        rf"_(?:{'|'.join(re.escape(name) for name in group_suffixes)})$"
+    )
 
 
-def _is_baked_augmentation(track_id: str) -> bool:
-    return _canonical_track_id(track_id) != track_id
+def _canonical_track_id(track_id: str, group_suffixes: tuple[str, ...]) -> str:
+    if not group_suffixes:
+        return track_id
+    return _group_suffix_regex(group_suffixes).sub("", track_id)
+
+
+def _is_baked_augmentation(track_id: str, group_suffixes: tuple[str, ...]) -> bool:
+    return _canonical_track_id(track_id, group_suffixes) != track_id
 
 
 class LeakageSafeChocoAudioDataset(Dataset):
+    """
+    Dataset wrapper that optionally removes grouped augmentation variants.
+
+    Parameters
+    ----------
+    GROUP_SUFFIXES:
+        Tuple of suffixes that identify cached files derived from the same source
+        track, for example `("add_noise", "apply_compression")`. These suffixes
+        are matched at the end of the track ID, before `_tXXXX_p+Y`.
+    """
+
     def __init__(
         self,
         data_path: Path,
         track_ids: list[str],
         data_dict: dict[str, list[Path]],
+        GROUP_SUFFIXES: tuple[str, ...] = DEFAULT_GROUP_SUFFIXES,
         augmentation: bool = False,
     ):
         super().__init__()
         self.data_path = data_path
         self.augmentation = augmentation
         self.data_dict = data_dict
+        self.group_suffixes = tuple(GROUP_SUFFIXES)
         self.data_list = self._get_data_list(track_ids)
 
     def __len__(self) -> int:
@@ -73,7 +130,9 @@ class LeakageSafeChocoAudioDataset(Dataset):
             data_list = [
                 file_path
                 for file_path in data_list
-                if not _is_baked_augmentation(_track_id_from_file(file_path))
+                if not _is_baked_augmentation(
+                    _track_id_from_file(file_path), self.group_suffixes
+                )
             ]
             data_list = [x for x in data_list if x.stem.endswith("_p+0")]
             data_list = [
@@ -93,12 +152,31 @@ class LeakageSafeChocoAudioDataset(Dataset):
 
 
 class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
+    """
+    Datamodule with source-aware splitting for cached ACE datasets.
+
+    Parameters
+    ----------
+    GROUP_SUFFIXES:
+        Tuple of track-ID suffixes that should be grouped with the original source
+        when creating train/validation splits. Example:
+        `("add_noise", "apply_compression", "randomly_eq", "apply_reverb")`.
+
+        If a cached file is named `billboard_song_add_noise_t0000_p+0.pt`, the
+        grouping key becomes `billboard_song`. This prevents one augmentation
+        variant from appearing in train while another variant of the same song
+        appears in validation.
+
+        To disable suffix-based grouping entirely, pass an empty tuple `()`.
+    """
+
     def __init__(
         self,
         data_path: str | Path,
         batch_size: int = 64,
         num_workers: int = 0,
         augmentation: bool = False,
+        GROUP_SUFFIXES: tuple[str, ...] = DEFAULT_GROUP_SUFFIXES,
         train_ratio: float | None = 0.6,
         val_ratio: float | None = 0.5,
         random_seed: int | None = None,
@@ -108,6 +186,7 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
         self.batch_size = batch_size
         self.num_workers = num_workers
         self.augmentation = augmentation
+        self.group_suffixes = tuple(GROUP_SUFFIXES)
         self.train_ratio = train_ratio
         self.val_ratio = val_ratio
         self.random_seed = random_seed
@@ -149,7 +228,7 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
     def _group_track_ids_by_source(self, data_dict: dict[str, list[Path]]) -> dict[str, list[str]]:
         grouped: dict[str, list[str]] = defaultdict(list)
         for track_id in data_dict:
-            grouped[_canonical_track_id(track_id)].append(track_id)
+            grouped[_canonical_track_id(track_id, self.group_suffixes)].append(track_id)
         return grouped
 
     def _split_dataset(self):
@@ -195,12 +274,14 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
                 self.data_path,
                 self.train_track_ids,
                 self.data_dict_train,
+                GROUP_SUFFIXES=self.group_suffixes,
                 augmentation=self.augmentation,
             )
             self.val_dataset = LeakageSafeChocoAudioDataset(
                 self.data_path,
                 self.val_track_ids,
                 self.data_dict_train,
+                GROUP_SUFFIXES=self.group_suffixes,
                 augmentation=False,
             )
 
@@ -209,6 +290,7 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
                 self.data_path,
                 self.test_track_ids,
                 self.data_dict_test,
+                GROUP_SUFFIXES=self.group_suffixes,
                 augmentation=False,
             )
 
@@ -318,7 +400,12 @@ def bind_overrides(params: dict | None):
 
 @gin.configurable
 class ChocoAudioDataModule(_LeakageSafeChocoAudioDataModule):
-    """Gin-compatible alias that preserves the upstream configurable name."""
+    """
+    Gin-compatible alias that preserves the upstream configurable name.
+
+    Use `ChocoAudioDataModule.GROUP_SUFFIXES` in gin or in the `params` override
+    dictionary when calling `main(...)`.
+    """
 
 
 LeakageSafeChocoAudioDataModule = ChocoAudioDataModule
