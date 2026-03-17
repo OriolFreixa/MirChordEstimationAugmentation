@@ -92,8 +92,7 @@ class LeakageSafeChocoAudioDataset(Dataset):
         )
 
 
-@gin.configurable
-class LeakageSafeChocoAudioDataModule(L.LightningDataModule):
+class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
     def __init__(
         self,
         data_path: str | Path,
@@ -282,7 +281,7 @@ def train(
     early_stop_callback = gin.get_configurable(EarlyStopping)()
     lr_monitor = LearningRateMonitor(logging_interval="epoch")
     logger = wandb_logger(name=run_name)  # type: ignore[arg-type]
-    datamodule = LeakageSafeChocoAudioDataModule(data_path=data_path)
+    datamodule = ChocoAudioDataModule(data_path=data_path)
 
     print(f"Data path: {datamodule.data_path}")
 
@@ -315,6 +314,14 @@ def bind_overrides(params: dict | None):
     for key, value in params.items():
         if value is not None:
             gin.bind_parameter(key, value)
+
+
+@gin.configurable
+class ChocoAudioDataModule(_LeakageSafeChocoAudioDataModule):
+    """Gin-compatible alias that preserves the upstream configurable name."""
+
+
+LeakageSafeChocoAudioDataModule = ChocoAudioDataModule
 
 
 @gin.configurable
