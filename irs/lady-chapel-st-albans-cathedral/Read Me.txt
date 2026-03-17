@@ -1,0 +1,185 @@
+
+Format(s): 
+Mono
+Stereo (Stereo Files)
+5.1 Surround (6 Channel Files)
+B-Format (4 Channel Files)
+
+Mono: 
+
+    stalbans_a_mono.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 1
+Bits per Sample: 24
+Duration: 6 s
+File Size: 775.3 KB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Neumann KM 140 Cardioid
+Source Location: A
+Microphone Location: A
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+
+    stalbans_b_mono.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 1
+Bits per Sample: 24
+Duration: 6 s
+File Size: 775.3 KB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Neumann KM 140 Cardioid
+Source Location: B
+Microphone Location: B
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+
+    stalbans_omni.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 1
+Bits per Sample: 24
+Duration: 6 s
+File Size: 775.3 KB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Soundfield SPS422B Microphone
+Source Location: A
+Microphone Location: A
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+Stereo: 
+
+    stalbans_a_ortf.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 2
+Bits per Sample: 24
+Duration: 6 s
+File Size: 1.51 MB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Neumann KM 140 Cardioid
+Source Location: A
+Microphone Location: A
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+
+    stalbans_b_ortf.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 2
+Bits per Sample: 24
+Duration: 6 s
+File Size: 1.51 MB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Neumann KM 140 Cardioid
+Source Location: B
+Microphone Location: B
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+
+    stalbans_a_binaural.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 2
+Bits per Sample: 24
+Duration: 6 s
+File Size: 1.51 MB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Source Location: A
+Microphone Location: A
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+
+    stalbans_b_binaural.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 2
+Bits per Sample: 24
+Duration: 6 s
+File Size: 1.51 MB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Source Location: B
+Microphone Location: B
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+B-Format: Multichannel: 
+
+    stalbans_a_wxyz.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 6 s
+File Size: 3.03 MB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Soundfield SPS422B Microphone
+Source Location: A
+Microphone Location: A
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+
+    stalbans_b_wxyz.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 4
+Bits per Sample: 24
+Duration: 6 s
+File Size: 3.03 MB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Soundfield SPS422B Microphone
+Source Location: B
+Microphone Location: B
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+5.1 Surround: 
+
+    stalbans_a_williams.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 6
+Bits per Sample: 24
+Duration: 6 s
+File Size: 4.54 MB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Soundfield SPS422B Microphone
+Source Location: A
+Microphone Location: A
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
+
+    stalbans_b_williams.wav
+
+Sample Rate: 44.1 kHz
+Number of Channels: 6
+Bits per Sample: 24
+Duration: 6 s
+File Size: 4.54 MB
+File Format: wav
+Source Sound: Genelec S30D, 10 second log. sine sweep
+Microphone: Soundfield SPS422B Microphone
+Source Location: B
+Microphone Location: B
+Source Height: 1.5 m
+Receiver Height: 1.5 m
+
