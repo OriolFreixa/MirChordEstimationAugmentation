@@ -75,6 +75,10 @@ def _glob_case_variants(data_path: Path, prefix: str) -> list[Path]:
     )
 
 
+def _glob_all_pt_files(data_path: Path) -> list[Path]:
+    return sorted(data_path.glob("*.pt"))
+
+
 def _group_suffix_regex(group_suffixes: tuple[str, ...]) -> re.Pattern[str]:
     return re.compile(
         rf"_(?:{'|'.join(re.escape(name) for name in group_suffixes)})$"
@@ -173,6 +177,7 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
     def __init__(
         self,
         data_path: str | Path,
+        test_data_path: str | Path | None = None,
         batch_size: int = 64,
         num_workers: int = 0,
         augmentation: bool = False,
@@ -183,6 +188,7 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
     ):
         super().__init__()
         self.data_path = Path(data_path)
+        self.test_data_path = Path(test_data_path) if test_data_path is not None else self.data_path
         self.batch_size = batch_size
         self.num_workers = num_workers
         self.augmentation = augmentation
@@ -203,10 +209,13 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
 
         isophonics_files = _glob_case_variants(self.data_path, "Isophonics")
         billboard_files = _glob_case_variants(self.data_path, "Billboard")
-        marl_files = _glob_case_variants(self.data_path, "MARL")
+        if test_data_path is None:
+            test_files = _glob_case_variants(self.test_data_path, "MARL")
+        else:
+            test_files = _glob_all_pt_files(self.test_data_path)
 
         self.train_list = isophonics_files + billboard_files
-        self.test_list = marl_files
+        self.test_list = test_files
 
         self.data_dict_train = self._precompute_data_dict(self.train_list)
         self.data_dict_test = self._precompute_data_dict(self.test_list)
@@ -215,6 +224,8 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
             f"Found {len(self.train_list)} training files "
             f"and {len(self.test_list)} test files."
         )
+        print(f"Training data path: {self.data_path}")
+        print(f"Test data path: {self.test_data_path}")
         print(f"Training IDs: {list(self.data_dict_train.keys())[:5]}... ")
         print(f"Test IDs: {list(self.data_dict_test.keys())[:5]}... ")
 
@@ -287,7 +298,7 @@ class _LeakageSafeChocoAudioDataModule(L.LightningDataModule):
 
         if stage == "test":
             self.test_dataset = LeakageSafeChocoAudioDataset(
-                self.data_path,
+                self.test_data_path,
                 self.test_track_ids,
                 self.data_dict_test,
                 GROUP_SUFFIXES=self.group_suffixes,
@@ -346,6 +357,7 @@ class EarlyStopping(_EarlyStopping):
 def train(
     model_class: type[L.LightningModule],
     data_path: str | Path,
+    test_data_path: str | Path | None = None,
     run_name: str = "default_run",
     max_epochs: int = 100,
     precision: str = "16-mixed",
@@ -363,9 +375,13 @@ def train(
     early_stop_callback = gin.get_configurable(EarlyStopping)()
     lr_monitor = LearningRateMonitor(logging_interval="epoch")
     logger = wandb_logger(name=run_name)  # type: ignore[arg-type]
-    datamodule = ChocoAudioDataModule(data_path=data_path)
+    datamodule = ChocoAudioDataModule(
+        data_path=data_path,
+        test_data_path=test_data_path,
+    )
 
-    print(f"Data path: {datamodule.data_path}")
+    print(f"Train data path: {datamodule.data_path}")
+    print(f"Test data path: {datamodule.test_data_path}")
 
     model = gin.get_configurable(model_class)(
         vocabularies=datamodule.vocabularies, vocab_path=vocab_path
@@ -387,6 +403,46 @@ def train(
 
     trainer.fit(model, datamodule=datamodule)
     trainer.test(model, datamodule=datamodule)
+    wandb.finish()
+
+
+@gin.configurable
+def test(
+    model_class: type[L.LightningModule],
+    data_path: str | Path,
+    checkpoint_path: str | Path,
+    test_data_path: str | Path | None = None,
+    run_name: str = "default_run",
+    precision: str = "16-mixed",
+    accelerator: str = "gpu",
+    devices: int = 1,
+    vocab_path: str | Path = "./ACE/chords_vocab.joblib",
+):
+    torch.set_float32_matmul_precision("medium")
+
+    logger = wandb_logger(name=run_name)  # type: ignore[arg-type]
+    datamodule = ChocoAudioDataModule(
+        data_path=data_path,
+        test_data_path=test_data_path,
+    )
+
+    print(f"Train data path: {datamodule.data_path}")
+    print(f"Test data path: {datamodule.test_data_path}")
+    print(f"Checkpoint path: {checkpoint_path}")
+
+    model = gin.get_configurable(model_class)(
+        vocabularies=datamodule.vocabularies, vocab_path=vocab_path
+    )
+
+    trainer = L.Trainer(
+        accelerator=accelerator,
+        devices=devices,
+        precision=precision,  # type: ignore[arg-type]
+        logger=logger,
+        deterministic=True,
+    )
+
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=str(checkpoint_path))
     wandb.finish()
 
 
@@ -412,7 +468,13 @@ LeakageSafeChocoAudioDataModule = ChocoAudioDataModule
 
 
 @gin.configurable
-def main(model_name: str, run_name: str, params: dict | None = None):
+def main(
+    model_name: str,
+    run_name: str,
+    mode: str = "train",
+    checkpoint_path: str | Path | None = None,
+    params: dict | None = None,
+):
     gin.clear_config()
     gin.parse_config_file("ACE/trainer.gin")
 
@@ -429,14 +491,29 @@ def main(model_name: str, run_name: str, params: dict | None = None):
         raise ValueError(f"Unknown model: {model_name}")
 
     bind_overrides(params)
-    train(model_class=model_class, run_name=run_name)
+    if mode == "train":
+        train(model_class=model_class, run_name=run_name)
+        return
+    if mode == "test":
+        if checkpoint_path is None:
+            raise ValueError("checkpoint_path is required when mode='test'")
+        test(
+            model_class=model_class,
+            run_name=run_name,
+            checkpoint_path=checkpoint_path,
+        )
+        return
+    raise ValueError(f"Unknown mode: {mode}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True)
     parser.add_argument("--name", type=str, required=True)
+    parser.add_argument("--mode", type=str, default="train", choices=["train", "test"])
     parser.add_argument("--data_path", type=str)
+    parser.add_argument("--test_data_path", type=str)
+    parser.add_argument("--checkpoint_path", type=str)
     parser.add_argument("--vocab_path", type=str)
     parser.add_argument("--accelerator", type=str, choices=["cpu", "gpu", "tpu"])
     parser.add_argument("--max_epochs", type=int)
@@ -450,10 +527,16 @@ if __name__ == "__main__":
 
     cli_overrides = {
         "train.data_path": args.data_path,
+        "train.test_data_path": args.test_data_path,
+        "test.data_path": args.data_path,
+        "test.test_data_path": args.test_data_path,
         "train.vocab_path": args.vocab_path,
+        "test.vocab_path": args.vocab_path,
         "train.max_epochs": args.max_epochs,
         "train.precision": args.precision,
+        "test.precision": args.precision,
         "train.accelerator": args.accelerator,
+        "test.accelerator": args.accelerator,
         "ModelCheckpoint.dirpath": args.checkpoint_dir,
         "ModelCheckpoint.save_top_k": args.checkpoint_save_top_k,
         "ModelCheckpoint.monitor": args.checkpoint_monitor,
@@ -461,4 +544,10 @@ if __name__ == "__main__":
         "EarlyStopping.monitor": args.earlystop_monitor,
     }
 
-    main(model_name=args.model, run_name=args.name, params=cli_overrides)
+    main(
+        model_name=args.model,
+        run_name=args.name,
+        mode=args.mode,
+        checkpoint_path=args.checkpoint_path,
+        params=cli_overrides,
+    )
