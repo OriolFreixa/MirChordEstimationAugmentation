@@ -279,3 +279,94 @@ def apply_compression(input_file: str, output_file: str, args: dict) -> str:
 
     y_compressed = librosa.util.normalize(y_compressed)
     return _write_mp3(output_file, y_compressed, sr_loaded)
+
+
+# ---------------------------------------------------------------------------
+# In-memory variants — same logic, no file I/O
+# Each takes (y: np.ndarray, sr: int, args: dict) -> np.ndarray
+# ---------------------------------------------------------------------------
+
+def apply_reverb_arr(y: np.ndarray, sr: int, args: dict) -> np.ndarray:
+    ir_path = args.get("ir_path")
+    if ir_path is None:
+        raise ValueError("apply_reverb_arr: 'ir_path' must be provided in args.")
+    wet_dry_mix = args.get("wet_dry_mix", 0.5)
+
+    ir, _ = librosa.load(ir_path, sr=sr)
+    y_wet = convolve(y, ir, mode="full")[: len(y)]
+    y_wet = librosa.util.normalize(y_wet)
+    y_out = (1.0 - wet_dry_mix) * y + wet_dry_mix * y_wet
+    return librosa.util.normalize(y_out)
+
+
+def add_real_noise_arr(y: np.ndarray, sr: int, args: dict) -> np.ndarray:
+    noise_path = args.get("noise_path")
+    if noise_path is None:
+        raise ValueError("add_real_noise_arr: 'noise_path' must be provided in args.")
+    wet_dry_mix = args.get("wet_dry_mix", 0.5)
+
+    noise_raw, _ = librosa.load(noise_path, sr=sr)
+    if len(noise_raw) < len(y):
+        noise_raw = np.tile(noise_raw, int(np.ceil(len(y) / len(noise_raw))))
+    noise_raw = noise_raw[: len(y)]
+
+    rms_noise = np.sqrt(np.mean(noise_raw ** 2)) + 1e-12
+    rms_signal = np.sqrt(np.mean(y ** 2)) + 1e-12
+    noise_scaled = (noise_raw / rms_noise) * rms_signal * wet_dry_mix
+
+    y_out = (1.0 - wet_dry_mix) * y + noise_scaled
+    peak = np.max(np.abs(y_out))
+    return y_out / peak if peak > 1.0 else y_out
+
+
+def randomly_eq_arr(y: np.ndarray, sr: int, args: dict) -> np.ndarray:
+    default_bands = [(100, 500), (500, 2000), (2000, 8000)]
+    bands = args.get("bands", default_bands)
+    gain_range = args.get("gain_range", (-6, 6))
+    nyquist = sr / 2.0
+
+    valid_bands = []
+    for low, high in bands:
+        lo = max(1.0, min(float(low), nyquist - 1))
+        hi = min(float(high), nyquist - 1)
+        if lo < hi:
+            valid_bands.append((lo, hi))
+
+    y_eq = np.zeros_like(y)
+    for low, high in valid_bands:
+        sos = butter(2, [low, high], btype="bandpass", fs=sr, output="sos")
+        gain_db = np.random.uniform(gain_range[0], gain_range[1])
+        y_eq += sosfilt(sos, y) * (10 ** (gain_db / 20.0))
+
+    return librosa.util.normalize(y_eq)
+
+
+def apply_compression_arr(y: np.ndarray, sr: int, args: dict) -> np.ndarray:
+    threshold_db = args.get("threshold_db", -20)
+    ratio = args.get("ratio", 4.0)
+    attack_ms = args.get("attack_ms", 5)
+    release_ms = args.get("release_ms", 100)
+    makeup_gain_db = args.get("makeup_gain_db", 0)
+
+    threshold_linear = 10 ** (threshold_db / 20.0)
+    attack_samples = max(1, int(attack_ms * sr / 1000))
+    release_samples = max(1, int(release_ms * sr / 1000))
+    makeup_gain = 10 ** (makeup_gain_db / 20.0)
+
+    y_compressed = np.zeros_like(y)
+    envelope = np.zeros_like(y)
+    for i in range(len(y)):
+        prev_env = envelope[i - 1] if i > 0 else 0.0
+        abs_sample = abs(y[i])
+        if abs_sample > prev_env:
+            envelope[i] = prev_env + (abs_sample - prev_env) / attack_samples
+        else:
+            envelope[i] = prev_env * (1.0 - 1.0 / release_samples)
+
+        if envelope[i] > threshold_linear:
+            gain = 1.0 / ((envelope[i] / threshold_linear) ** (1.0 / ratio - 1.0))
+        else:
+            gain = 1.0
+        y_compressed[i] = y[i] * gain * makeup_gain
+
+    return librosa.util.normalize(y_compressed)
