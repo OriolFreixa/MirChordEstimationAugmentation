@@ -17,7 +17,7 @@ This project investigates whether **training-time acoustic augmentation** can im
 
 ### Base Model
 
-We build on the Conformer-based ACE framework introduced by Poltronieri, Serra, and Rocamora [1]. The base Conformer backbone is adopted without modification. Audio is segmented into 10-second excerpts at 22.05 kHz and transformed into a Constant-Q representation with 144 frequency bins (24 bins/octave over 6 octaves). The model is trained on the **majmin vocabulary** (26 chord classes). Chord annotations are stored in JAMS format and converted to majmin targets following standard ACE conventions.
+We build on the Conformer-based ACE framework introduced by Poltronieri, Serra, and Rocamora [1]. The base Conformer backbone is adopted without modification. 
 
 ### Datasets
 
@@ -118,7 +118,7 @@ MirChordEstimationAugmentation/
 ## Installation
 
 ```bash
-git clone https://github.com/<your-repo>/MirChordEstimationAugmentation
+git clone https://github.com/OriolFreixa/MirChordEstimationAugmentation.git
 cd MirChordEstimationAugmentation
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
