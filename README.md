@@ -3,8 +3,6 @@
 **Rafael Moncayo, Oriol Freixa, Manuel Castillo Obregon**  
 Music Technology Group — Universitat Pompeu Fabra, Barcelona
 
-> Paper submitted to ICASSP 2026. Code and augmentation pipeline publicly available in this repository.
-
 ---
 
 ## Overview
